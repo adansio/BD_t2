@@ -1,16 +1,16 @@
-<% session[:user_id] = @current_user.id
-	if(User.find(session[:user_id]))
-		def ver_ses1%>
-
-<h1>Ppal#index</h1>
+<h1>Bienvenido Ppal#index</h1>
 <p>Find me in app/views/ppal/index.html.erb</p>
 
-<li>
-	<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
-</li>
+<% if user_signed_in? %>
+	autenticado como <%= current_user.email %>. 
+	No eres tu?
 
-<%end 
-	def ver_ses2
-		else
-		redirect_to @users, :notice => "Sesion cerrada"
-	end%>
+	<%= link_to('Salir', destroy_user_session_path, :method => :delete) %>
+	<%= link_to 'Editar datos', edit_user_registration_path %> 
+<% else %>
+	<%= link_to "Sign up", new_user_registration_path %> or
+	<%= link_to "Sign in", new_user_session_path %>
+<% end %>
+	
+	
+
