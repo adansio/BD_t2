@@ -1,5 +1,18 @@
 <h1>New post</h1>
 
-<%= render 'form' %>
+<% if user_signed_in? %>
+    autenticado como <%= current_user.email %>. 
+    No eres tu? 
 
-<%= link_to 'Back', posts_path %>
+    <%= link_to('Salir', destroy_user_session_path, :method => :delete) %>
+	
+	<%= render 'form' %>
+	<%= link_to 'Back', posts_path %>
+
+<% else %>
+	<%= link_to "Sign up", new_user_registration_path %> or
+	<%= link_to "Sign in", new_user_session_path %>
+<% end %>
+
+	
+
