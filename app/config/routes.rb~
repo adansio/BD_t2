@@ -1,17 +1,11 @@
 App::Application.routes.draw do
-#<<<<<<< HEAD
-  resources :posts
-
-  get "ppal/index"
-#=======
-#>>>>>>> 2c0212335aec74f4ef7098b946eb12336d223a4d
-
-  devise_for :users
   resources :users, only: [:show, :index] do
 	resources :posts
   end
 
-#  get "ppal/index"
+  get "ppal/index"
+
+  devise_for :users
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
