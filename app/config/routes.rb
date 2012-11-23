@@ -1,4 +1,6 @@
 App::Application.routes.draw do
+  get "users/show"
+
 #<<<<<<< HEAD
   resources :posts
 

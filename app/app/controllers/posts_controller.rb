@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    @posts = Post.order("updated_at").page(params[:page]).per(10)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,6 +14,7 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
+
     @post = Post.find(params[:id])
 
     respond_to do |format|
@@ -35,7 +36,11 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
-    @post = Post.find(params[:id])
+    
+	@post = Post.find(params[:id])
+	unless current_user == @post.user
+		redirect_to posts_path
+	end
   end
 
   # POST /posts
@@ -76,11 +81,17 @@ class PostsController < ApplicationController
   # DELETE /posts/1.json
   def destroy
     @post = Post.find(params[:id])
-    @post.destroy
+ 	unless current_user == @post.user
+		redirect_to posts_path
 
-    respond_to do |format|
-      format.html { redirect_to posts_url }
-      format.json { head :no_content }
-    end
+	else
+ 		@post.destroy
+	
+
+	    respond_to do |format|
+    		format.html { redirect_to posts_url }
+		    format.json { head :no_content }
+    	end
+  	end
   end
 end

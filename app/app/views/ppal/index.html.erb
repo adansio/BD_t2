@@ -7,10 +7,13 @@
 
 	<%= link_to('Salir', destroy_user_session_path, :method => :delete) %> |
 	<%= link_to 'Editar datos', edit_user_registration_path %> | 
-	<%= link_to 'posts', posts_path %>
+	<%= link_to 'posts', posts_path %> |
+	<%= link_to 'perfil', current_user %>
 <% else %>
 	<%= link_to "Sign up", new_user_registration_path %> |
-	<%= link_to "Sign in", new_user_session_path %>
+	<%= link_to "Sign in", new_user_session_path %> |
+	<%=  link_to 'posts', posts_path %>
+
 <% end %>
 	
 	

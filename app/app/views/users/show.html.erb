@@ -1,2 +1,30 @@
 <h1>Users#show</h1>
 <p>Find me in app/views/users/show.html.erb</p>
+  <%= link_to 'posts', posts_path %> | 
+  <%= link_to 'ppal', ppal_index_path %>
+
+	<h2>Informacion de usuario</h2>
+  <tr>
+	<td><%= image_tag @user.gravatar_url %></td>
+	<br><br>
+ 	<td><%= @user.email %></td><br>
+	<td><%= @user.bio %></td><br>
+	<td><%= @user.country %></td><br>
+	<td><%= @user.birthday %></td><br><br>
+  </tr>
+  <%  if user_signed_in? and current_user == @user %>
+	  <%= link_to 'Editar datos', edit_user_registration_path %> 
+  <% end %>
+
+	<h2> posts realizados </h2>
+<% @posts.each do |post| %> 
+<tr>
+ 	<td><%= post.title %></td><br>
+	<td><%= post.content %></td><br>
+	<td><%= post.created_at %></td><br>
+	<td><%= post.updated_at %></td><br><br>
+  </tr>
+<% end %>
+  <%= paginate @posts %>
+
+

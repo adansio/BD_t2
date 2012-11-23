@@ -5,24 +5,34 @@
     <th>Title</th>
     <th>Content</th>
     <th>User</th>
-    <th></th>
+    <th>Fecha</th>
     <th></th>
     <th></th>
   </tr>
-
 <% @posts.each do |post| %>
-  <tr>
+
+ <tr>
     <td><%= post.title %></td>
     <td><%= post.content %></td>
-    <td><%= post.user_id %></td>
-    <td><%= link_to 'Show', post %></td>
-    <td><%= link_to 'Edit', edit_post_path(post) %></td>
-    <td><%= link_to 'Destroy', post, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
+    <td><%= link_to post.user.email, user_path(post.user) %></td>
+	<td><%= link_to 'Show', post %></td>
+	<% if user_signed_in? and current_user == post.user %>
+	    <td><%= link_to 'Edit', edit_post_path(post) %></td>
+    	<td><%= link_to 'Destroy', post, confirm: 'Are you sure?', method: :delete %></td>
+ 	<% end %>
+ </tr>
 <% end %>
 </table>
 
-<br />
+<br><br>
+<%= paginate @posts %>
 
-<%= link_to 'New Post', new_post_path %> | 
+<br />
+	<% if user_signed_in? %>
+<%= link_to 'New Post', new_post_path %> |
 <%= link_to 'ppal', ppal_index_path %>
+	<% else %>
+<%= link_to 'ppal', ppal_index_path %>
+	<% end %>
+
+
