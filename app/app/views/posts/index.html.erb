@@ -15,6 +15,7 @@
     <td><%= post.title %></td>
     <td><%= post.content %></td>
     <td><%= link_to post.user.email, user_path(post.user) %></td>
+	<td><%= post.updated_at %></td>
 	<td><%= link_to 'Show', post %></td>
 	<% if user_signed_in? and current_user == post.user %>
 	    <td><%= link_to 'Edit', edit_post_path(post) %></td>

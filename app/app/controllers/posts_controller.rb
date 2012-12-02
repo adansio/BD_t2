@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.order("updated_at").page(params[:page]).per(10)
+    @posts = Post.order("updated_at DESC").page(params[:page]).per(10)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,8 +14,8 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
-
     @post = Post.find(params[:id])
+#	@comment = Comment.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb

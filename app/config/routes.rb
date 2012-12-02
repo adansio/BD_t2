@@ -1,12 +1,17 @@
 App::Application.routes.draw do
   get "users/show"
+  match 'comments/:id/like' => 'comments#like', :as => :like_comment
+  match 'comments/:id/unlike' => 'comments#unlike', :as => :unlike_comment
 
-#<<<<<<< HEAD
-  resources :posts
+
+  resources :posts do
+  	member do 
+		resources :comments
+	end
+  end
+
 
   get "ppal/index"
-#=======
-#>>>>>>> 2c0212335aec74f4ef7098b946eb12336d223a4d
 
   devise_for :users
   resources :users, only: [:show, :index] do

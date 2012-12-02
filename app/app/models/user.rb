@@ -12,5 +12,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :bio, :country, :birthday
   # attr_accessible :title, :body
   #
-  has_many :posts 
+  has_many :posts and has_many :comments 
+
+  make_flagger
 end

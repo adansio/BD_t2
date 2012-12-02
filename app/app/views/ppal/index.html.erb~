@@ -1,0 +1,16 @@
+<h1>Bienvenido <%= current_user.email %>.</h1>
+<p>Find me in app/views/ppal/index.html.erb</p>
+
+<% if user_signed_in? %>
+	autenticado como <%= current_user.email %>. 
+	No eres tu?
+
+	<%= link_to('Salir', destroy_user_session_path, :method => :delete) %>
+	<%= link_to 'Editar datos', edit_user_registration_path %> 
+<% else %>
+	<%= link_to "Sign up", new_user_registration_path %> or
+	<%= link_to "Sign in", new_user_session_path %>
+<% end %>
+	
+	
+
