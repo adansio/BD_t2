@@ -25,6 +25,7 @@ gem 'simple_form'
 gem 'gravtastic'
 gem 'kaminari'
 gem 'make_flaggable', :git => 'git://github.com/cavneb/make_flaggable.git'
+gem 'seed_dumper'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
