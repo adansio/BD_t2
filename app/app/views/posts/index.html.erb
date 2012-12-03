@@ -1,4 +1,4 @@
-<h1>Listing posts</h1>
+<h1>Lista de posts</h1>
 
 <table>
   <tr>
@@ -16,10 +16,10 @@
     <td><%= post.content %></td>
     <td><%= link_to post.user.email, user_path(post.user) %></td>
 	<td><%= post.updated_at %></td>
-	<td><%= link_to 'Show', post %></td>
+	<td><%= link_to 'Ver', post %></td>
 	<% if user_signed_in? and current_user == post.user %>
-	    <td><%= link_to 'Edit', edit_post_path(post) %></td>
-    	<td><%= link_to 'Destroy', post, confirm: 'Are you sure?', method: :delete %></td>
+	    <td><%= link_to 'Editar', edit_post_path(post) %></td>
+    	<td><%= link_to 'Eliminar', post, confirm: 'Are you sure?', method: :delete %></td>
  	<% end %>
  </tr>
 <% end %>

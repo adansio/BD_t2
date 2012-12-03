@@ -1,14 +1,20 @@
-<h1>Bienvenido Ppal#index</h1>
-<p>Find me in app/views/ppal/index.html.erb</p>
+<h1>Bienvenido a Tumblerito</h1>
+<!--p>Find me in app/views/ppal/index.html.erb</p -->
 
 <% if user_signed_in? %>
 	autenticado como <%= current_user.email %>. 
 	No eres tu?
 
-	<%= link_to('Salir', destroy_user_session_path, :method => :delete) %> |
-	<%= link_to 'Editar datos', edit_user_registration_path %> | 
-	<%= link_to 'posts', posts_path %> |
+	<%= link_to('Salir', destroy_user_session_path, :method => :delete) %> 
+	<p>
+	<%= link_to 'Editar datos', edit_user_registration_path %> 
+	</p>
+	<p>
+	<%= link_to 'posts', posts_path %> 
+	</p>
+	<p>
 	<%= link_to 'perfil', current_user %>
+	</p>
 <% else %>
 	<%= link_to "Sign up", new_user_registration_path %> |
 	<%= link_to "Sign in", new_user_session_path %> |
